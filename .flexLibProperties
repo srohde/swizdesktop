@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties includeAllClasses="false" version="3">
+  <includeClasses>
+    <classEntry path="com.codeazur.fzip.FZip"/>
+    <classEntry path="com.codeazur.fzip.FZipErrorEvent"/>
+    <classEntry path="com.codeazur.fzip.FZipEvent"/>
+    <classEntry path="com.codeazur.fzip.FZipFile"/>
+    <classEntry path="com.codeazur.fzip.FZipLibrary"/>
+    <classEntry path="com.codeazur.utils.AIRRemoteUpdater"/>
+    <classEntry path="com.codeazur.utils.AIRRemoteUpdaterEvent"/>
+    <classEntry path="com.codeazur.utils.ChecksumUtil"/>
+    <classEntry path="org.swizframework.desktop.ISwizUpdateBean"/>
+    <classEntry path="org.swizframework.desktop.info.IUpdateInfo"/>
+    <classEntry path="org.swizframework.desktop.event.OnlineEvent"/>
+    <classEntry path="org.swizframework.desktop.SwizUpdateBean"/>
+    <classEntry path="org.swizframework.desktop.event.UpdateEvent"/>
+    <classEntry path="org.swizframework.desktop.info.UpdateInfo"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

@@ -1,0 +1,104 @@
+Swiz Desktop Library for the use with Adobe® AIR®.
+
+The library is only supposed to be used in combination with the Swiz framework: http://swizframework.org
+
+Features:
+- Update notification and update engine
+- Online notification
+
+For the update engine the AIR Remote Updater from côdeazur brasil lab is included:
+http://codeazur.com.br/lab/airremoteupdater/
+
+To use the library declare the SwizUpdateBean in your BeanLoader:
+<desktop:SwizUpdateBean id="swizUpdateBean" xmlns:desktop="org.swizframework.desktop.*"
+	updateUrl="http://yourdomain/YourApp.air"
+	autoCheckUpdate="true" autoStartUpdate="true" />
+	
+Create an UpdateController which is also defined in your BeanLoader like:
+package com.domain.ctrl
+{
+	
+	import com.domain.view.UpdateWindow;
+	
+	import mx.core.Window;
+	
+	import org.swizframework.Swiz;
+	import org.swizframework.desktop.ISwizUpdateBean;
+	import org.swizframework.desktop.UpdateEvent;
+
+	public class UpdateController
+	{
+		
+		private var updateWindow:Window;
+		
+		[Autowire(id="swizUpdateBean")]
+		public function set updateBean(bean:ISwizUpdateBean):void
+		{
+			bean.addEventListener(UpdateEvent.VERSION_INFO, function(e:UpdateEvent):void
+			{
+				if(e.updateInfo.localVersion != e.updateInfo.remoteVersion)
+				{
+					updateWindow = new UpdateWindow();
+					Swiz.registerWindow(updateWindow);
+					updateWindow.open();
+					updateWindow.move(50, 50);
+				}
+			});
+			
+			bean.addEventListener(UpdateEvent.UPDATE, function(e:UpdateEvent):void
+			{
+				e.preventDefault();
+			});
+		}
+		
+		public function UpdateController()
+		{
+		}
+
+	}
+}
+
+com.domain.view.UpdateWindow.mxml example:
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Window xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="250" height="210"
+	title="Update" alwaysInFront="true" resizable="false"
+	showStatusBar="false" showGripper="false"
+	paddingLeft="10" paddingTop="10">
+	
+	<mx:Script>
+		<![CDATA[
+			import org.swizframework.desktop.ISwizUpdateBean;
+			
+			[Bindable][Autowire]
+			public var swizUpdateBean:ISwizUpdateBean;
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Form verticalGap="0">
+		<mx:FormItem label="Your Version">
+			<mx:Text text="{swizUpdateBean.updateInfo.localVersion}" />
+		</mx:FormItem>
+		<mx:FormItem label="New Version">
+			<mx:Text text="{swizUpdateBean.updateInfo.remoteVersion}" />
+		</mx:FormItem>
+	</mx:Form>
+	
+	<mx:Spacer height="10" />
+	
+	<mx:Label text="Progress {swizUpdateBean.updateInfo.bytesLoaded}/{swizUpdateBean.updateInfo.bytesTotal}" />
+	
+	<mx:ProgressBar indeterminate="false"
+		label="Remaining {swizUpdateBean.updateInfo.timeRemaining}s ({swizUpdateBean.updateInfo.kiloBytePerSecond} KBit/s)"
+		mode="polled"
+		source="{swizUpdateBean.updateInfo}" />
+			
+	<mx:Spacer height="10" />
+	
+	<mx:HBox width="100%" horizontalAlign="center">
+		<mx:Button label="Update and Restart"
+			enabled="{swizUpdateBean.updateInfo.complete}"
+			click="swizUpdateBean.executeUpdate(false)" />
+	</mx:HBox>
+	
+</mx:Window>
