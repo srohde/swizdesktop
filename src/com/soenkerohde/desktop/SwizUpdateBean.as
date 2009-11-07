@@ -193,7 +193,7 @@ package com.soenkerohde.desktop {
 		}
 		
 		protected function onUpdateError( event : IOErrorEvent ) : void {
-			logger.error( "onUpdateError " + event.errorID );
+			logger.error( "onUpdateError " + event.text );
 			dispatchEvent( event.clone() );
 		}
 		

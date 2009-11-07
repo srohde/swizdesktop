@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<project name="Swiz Desktop" basedir="." default="asdoc">
+
+	<property name="FLEX_HOME" location="/Applications/Adobe Flash Builder Plug-in Beta 2/sdks/4.0.0" />
+
+	<target name="asdoc">
+		<delete includeemptydirs="true">
+			<fileset dir="${basedir}/docs" includes="**/*" />
+		</delete>
+
+		<exec executable="${FLEX_HOME}/bin/aasdoc" spawn="no">
+			<arg line="-o '${basedir}/docs'" />
+			<arg line="-sp '${basedir}/src'" />
+			<arg line="-ds '${basedir}/src'" />
+			<arg line="-library-path '${basedir}/libs'" />
+			<arg 
+				 line="-library-path='${FLEX_HOME}/frameworks/libs,${FLEX_HOME}/frameworks/libs/air,${FLEX_HOME}/frameworks/libs/player/9,${FLEX_HOME}/frameworks/libs/player/10'" />
+			<arg line="-window-title 'Swiz Desktop'" />
+			<arg line="-templates-path '${FLEX_HOME}/asdoc/templates'" />
+		</exec>
+	</target>
+
+</project>
