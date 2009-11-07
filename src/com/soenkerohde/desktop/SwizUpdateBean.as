@@ -18,11 +18,15 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-package org.swizframework.desktop {
+package com.soenkerohde.desktop {
 	import air.net.URLMonitor;
 	
 	import com.codeazur.utils.AIRRemoteUpdater;
 	import com.codeazur.utils.AIRRemoteUpdaterEvent;
+	import com.soenkerohde.desktop.event.OnlineEvent;
+	import com.soenkerohde.desktop.event.UpdateEvent;
+	import com.soenkerohde.desktop.info.IUpdateInfo;
+	import com.soenkerohde.desktop.info.UpdateInfo;
 	
 	import flash.desktop.Updater;
 	import flash.events.Event;
@@ -31,17 +35,12 @@ package org.swizframework.desktop {
 	import flash.events.ProgressEvent;
 	import flash.events.StatusEvent;
 	import flash.filesystem.File;
-	import flash.net.SharedObject;
 	import flash.net.URLRequest;
 	
 	import mx.logging.ILogger;
 	import mx.logging.Log;
 	
 	import org.swizframework.factory.IInitializingBean;
-	import org.swizframework.desktop.event.OnlineEvent;
-	import org.swizframework.desktop.event.UpdateEvent;
-	import org.swizframework.desktop.info.IUpdateInfo;
-	import org.swizframework.desktop.info.UpdateInfo;
 	
 	/**
 	 *

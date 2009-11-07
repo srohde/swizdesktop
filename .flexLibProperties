@@ -9,12 +9,12 @@
     <classEntry path="com.codeazur.utils.AIRRemoteUpdater"/>
     <classEntry path="com.codeazur.utils.AIRRemoteUpdaterEvent"/>
     <classEntry path="com.codeazur.utils.ChecksumUtil"/>
-    <classEntry path="org.swizframework.desktop.ISwizUpdateBean"/>
-    <classEntry path="org.swizframework.desktop.info.IUpdateInfo"/>
-    <classEntry path="org.swizframework.desktop.event.OnlineEvent"/>
-    <classEntry path="org.swizframework.desktop.SwizUpdateBean"/>
-    <classEntry path="org.swizframework.desktop.event.UpdateEvent"/>
-    <classEntry path="org.swizframework.desktop.info.UpdateInfo"/>
+    <classEntry path="com.soenkerohde.desktop.ISwizUpdateBean"/>
+    <classEntry path="com.soenkerohde.desktop.SwizUpdateBean"/>
+    <classEntry path="com.soenkerohde.desktop.event.OnlineEvent"/>
+    <classEntry path="com.soenkerohde.desktop.event.UpdateEvent"/>
+    <classEntry path="com.soenkerohde.desktop.info.IUpdateInfo"/>
+    <classEntry path="com.soenkerohde.desktop.info.UpdateInfo"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

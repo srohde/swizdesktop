@@ -18,7 +18,7 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-package org.swizframework.desktop.info {
+package com.soenkerohde.desktop.info {
 	
 	public interface IUpdateInfo {
 		

@@ -18,25 +18,27 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-package org.swizframework.desktop.event {
-	import flash.events.Event;
-	import org.swizframework.desktop.info.IUpdateInfo;
+package com.soenkerohde.desktop.event {
 	
-	public class UpdateEvent extends Event {
+	import flash.events.Event;
+	
+	public class OnlineEvent extends Event {
 		
-		public static const INIT : String = "init";
-		public static const CHECK_ONLINE : String = "checkOnline";
-		public static const CHECK_VERSION : String = "checkVersion";
-		public static const VERSION_INFO : String = "versionInfo";
-		public static const DOWNLOAD : String = "download";
-		public static const PROGRESS : String = "progress";
-		public static const UPDATE : String = "update";
+		public static const CHANGE : String = "OnlineEvent.CHANGE";
 		
-		public var updateInfo:IUpdateInfo;
+		private var _online:Boolean;
 		
-		public function UpdateEvent( type : String, updateInfo : IUpdateInfo, bubbles : Boolean = false, cancelable : Boolean = true ) {
+		public function get online() : Boolean {
+			return _online;
+		}
+		
+		public function OnlineEvent( type : String, online : Boolean, bubbles : Boolean = false, cancelable : Boolean = false ) {
 			super( type, bubbles, cancelable );
-			this.updateInfo = updateInfo;
+			_online = online;
+		}
+		
+		override public function clone() : Event {
+			return new OnlineEvent( type, online, bubbles, cancelable );
 		}
 	
 	}

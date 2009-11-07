@@ -18,10 +18,11 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-package org.swizframework.desktop {
+package com.soenkerohde.desktop {
+	
+	import com.soenkerohde.desktop.info.IUpdateInfo;
 	
 	import flash.events.IEventDispatcher;
-	import org.swizframework.desktop.info.IUpdateInfo;
 	
 	public interface ISwizUpdateBean extends IEventDispatcher {
 		
