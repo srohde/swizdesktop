@@ -25,20 +25,19 @@
  */
 
 package com.codeazur.utils {
-	import flash.text.TextField;
-	import flash.display.MovieClip;
-	import flash.events.*;
-	import flash.utils.*;
-	import flash.net.*;
-	
 	import com.codeazur.fzip.*;
 	import com.codeazur.utils.AIRRemoteUpdaterEvent;
 	
-	import flash.filesystem.File;
-	import flash.filesystem.FileStream;
-	import flash.filesystem.FileMode;
-	import flash.desktop.Updater;
 	import flash.desktop.NativeApplication;
+	import flash.desktop.Updater;
+	import flash.display.MovieClip;
+	import flash.events.*;
+	import flash.filesystem.File;
+	import flash.filesystem.FileMode;
+	import flash.filesystem.FileStream;
+	import flash.net.*;
+	import flash.text.TextField;
+	import flash.utils.*;
 	
 	public class AIRRemoteUpdater extends EventDispatcher {
 		protected static var pathAppXml:Array = ["META-INF", "AIR", "application.xml"];
@@ -60,6 +59,7 @@ package com.codeazur.utils {
 				air.addEventListener( FZipEvent.FILE_LOADED, zipFileLoadedHandler );
 				air.addEventListener( IOErrorEvent.IO_ERROR, defaultHandler );
 				air.addEventListener( SecurityErrorEvent.SECURITY_ERROR, defaultHandler );
+				air.addEventListener( FZipErrorEvent.PARSE_ERROR, defaultHandler );
 				air.load( request );
 			}
 		}
